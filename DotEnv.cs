@@ -36,7 +36,6 @@ namespace MetricsToRedis
                     continue;
 
                 env.Add(parts[0], parts[1]);
-                //Environment.SetEnvironmentVariable(parts[0], parts[1]);
             }
             return env;
 
