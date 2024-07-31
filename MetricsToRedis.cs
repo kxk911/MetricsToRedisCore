@@ -2,7 +2,7 @@
 
 namespace MetricsToRedis
 {
-    public class MetricsToRedis
+    public class MetricsToRedis : IMetricsToRedis
     {
         private static IDatabase? _db;
         private static IServer? _server;
@@ -14,17 +14,17 @@ namespace MetricsToRedis
         /// Constructor with custom connection to Redis
         /// </summary>
         /// <param name="connection">Connection string to Redis</param>
-        public MetricsToRedis(string connection)
-        {
-            if (_db == null)
-            {
-                var configuration = ConfigurationOptions.Parse(connection);
+        //public MetricsToRedis(string connection)
+        //{
+        //    if (_db == null)
+        //    {
+        //        var configuration = ConfigurationOptions.Parse(connection);
 
-                var redis = ConnectionMultiplexer.Connect(configuration);
-                _db = redis.GetDatabase();
-                _server = redis.GetServer(connection);
-            }
-        }
+        //        var redis = ConnectionMultiplexer.Connect(configuration);
+        //        _db = redis.GetDatabase();
+        //        _server = redis.GetServer(connection);
+        //    }
+        //}
 
         /// <summary>
         /// Default constructor
@@ -34,7 +34,12 @@ namespace MetricsToRedis
         {
             if (_db == null)
             {
-                var AddressandPort = DotEnv.getEnv("REDIS_ADDRES_PORT", "localhost:6379");
+                var AddressandPort = Environment.GetEnvironmentVariable("REDIS_ADDRES_PORT");
+                if(AddressandPort == null)
+                {
+                    AddressandPort = "localhost:6379";
+                }
+                //var AddressandPort = DotEnv.getEnv("REDIS_ADDRES_PORT", "localhost:6379");
 
                 if (AddressandPort == null) throw new Exception("Incorect connection string");
 

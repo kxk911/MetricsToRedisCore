@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Metrics to redis (Core)</Title>
-    <Version>0.0.1</Version>
+    <Version>0.0.3</Version>
     <Authors>Konstatin Chizhov</Authors>
     <PackageProjectUrl>https://github.com/kxk911/MetricsToRedisCore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kxk911/MetricsToRedisCore</RepositoryUrl>
